@@ -5,6 +5,7 @@ export const MainContainer = styled.View`
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const Content = styled.View`
@@ -15,4 +16,5 @@ export const Content = styled.View`
   shadowOffset:{  width: 10,  height: 10,  };
   shadowColor: black;
   shadowOpacity: 1.0;
+  padding: 10px;
 `;
