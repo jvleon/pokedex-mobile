@@ -14,15 +14,9 @@ import store from './store';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './containers/Home';
+import Detail from './containers/Detail';
 
 const Stack = createStackNavigator();
-
-const Detail = ({navigation}) => (
-  <View>
-    <Text>Detail</Text>
-    <Button title="Click Me" onPress={() => navigation.goBack()} />
-  </View>
-);
 
 const App = () => (
   <Provider store={store}>

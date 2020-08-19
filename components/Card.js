@@ -1,6 +1,18 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Card, Button, Image} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
+
+const FunctionalButton = ({data}) => {
+  const navigation = useNavigation();
+  return (
+    <Button
+      title="Ver mas"
+      type="outline"
+      onPress={() => navigation.navigate('Detail', {data})}
+    />
+  );
+};
 
 const CustomCard = ({item: {name, extra_data}}) => {
   return (
@@ -18,11 +30,7 @@ const CustomCard = ({item: {name, extra_data}}) => {
           />
         </View>
         <View>
-          <Button
-            title="Ver mas"
-            type="outline"
-            onPress={() => navigation.navigate('Detail')}
-          />
+          <FunctionalButton data={{name, extra_data}} />
         </View>
       </Card>
     </>

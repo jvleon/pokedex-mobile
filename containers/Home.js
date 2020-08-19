@@ -11,7 +11,6 @@ const Home = ({pokemons, navigation, next, ...props}) => {
 
   const onLoadMore = () => {
     props.getPokedex(next);
-    console.log('next', next);
   };
 
   return (
