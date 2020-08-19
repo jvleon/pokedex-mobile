@@ -1,15 +1,13 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View} from 'react-native';
-import {Card, Button, Image, Text} from 'react-native-elements';
+import {Card, Button, Text} from 'react-native-elements';
+import {StyledImage, Section, Title, BottomSection, StatsContainer} from './styled';
 
 const Detail = ({navigation, route}) => {
   const {data} = route.params;
   return (
     <Card>
       <Text h4>{data.name}</Text>
-      <Image
-        style={{height: 180}}
+      <StyledImage
         source={{
           uri:
             data.extra_data &&
@@ -17,37 +15,30 @@ const Detail = ({navigation, route}) => {
             data.extra_data.sprites.front_default,
         }}
       />
-      <View style={{paddingBottom: 5, paddingTop: 5}}>
-        <Text style={{fontSize: 20}}>Tipos:</Text>
+      <Section>
+        <Title>Tipos:</Title>
         {data.extra_data &&
           data.extra_data.types &&
           data.extra_data.types.map(({type: {name}}, i) => (
             <Text key={i}>{name}</Text>
           ))}
-      </View>
-      <View style={{paddingBottom: 5, paddingTop: 5}}>
-        <Text style={{fontSize: 20}}>Habilidades:</Text>
+      </Section>
+      <Section>
+        <Title>Habilidades:</Title>
         {data.extra_data &&
           data.extra_data.abilities.map(({ability: {name}}, i) => (
             <Text key={i}>{name}</Text>
           ))}
-      </View>
-      <View
-        style={{
-          paddingBottom: 5,
-          paddingTop: 5,
-          display: 'flex',
-          flexWrap: 'wrap',
-          flexDirection: 'row'
-        }}>
+      </Section>
+      <BottomSection>
         {data.extra_data &&
           data.extra_data.stats.map(({base_stat, stat: {name}}, i) => (
-            <View key={i} style={{width: '50%'}}>
+            <StatsContainer key={i}>
               <Text>{name} - </Text>
               <Text>{base_stat}</Text>
-            </View>
+            </StatsContainer>
           ))}
-      </View>
+      </BottomSection>
       <Button title="Regresar" onPress={() => navigation.goBack()} />
     </Card>
   );

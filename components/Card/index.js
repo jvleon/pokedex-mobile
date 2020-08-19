@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Card, Button, Image} from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
+import {StyledCard, StyledImage} from './styled';
 
 const FunctionalButton = ({data}) => {
   const navigation = useNavigation();
@@ -17,10 +18,9 @@ const FunctionalButton = ({data}) => {
 const CustomCard = ({item: {name, extra_data}}) => {
   return (
     <>
-      <Card title={name} style={{height: 300, width: 200}}>
+      <StyledCard title={name}>
         <View>
-          <Image
-            style={{height: 300}}
+          <StyledImage
             source={{
               uri:
                 extra_data &&
@@ -32,7 +32,7 @@ const CustomCard = ({item: {name, extra_data}}) => {
         <View>
           <FunctionalButton data={{name, extra_data}} />
         </View>
-      </Card>
+      </StyledCard>
     </>
   );
 };

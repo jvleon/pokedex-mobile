@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import InfiniteScroll from 'react-native-infinite-scrolling';
-import {getPokedex} from '../actions/';
-import Card from '../components/Card';
-import Modal from '../components/Modal';
+import {getPokedex} from '../../actions/';
+import Card from '../../components/Card';
+import Modal from '../../components/Modal';
 
 const Home = ({pokemons, navigation, next, ...props}) => {
   useEffect(() => {
