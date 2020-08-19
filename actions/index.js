@@ -1,4 +1,4 @@
-import {GET_ALL_POKEMONS, SET_PAGINATION} from '../actionTypes';
+import {GET_ALL_POKEMONS, SET_PAGINATION, SET_LOADING} from '../actionTypes';
 
 const getPokemons = (payload) => ({
   type: GET_ALL_POKEMONS,
@@ -8,6 +8,16 @@ const getPokemons = (payload) => ({
 const setPagination = (payload) => ({
   type: SET_PAGINATION,
   payload,
+});
+
+const activeLoading = () => ({
+  type: SET_LOADING,
+  payload: true,
+});
+
+const deactiveLoading = () => ({
+  type: SET_LOADING,
+  payload: false,
 });
 
 export const getPokemonsData = async (name) => {
@@ -31,6 +41,7 @@ export const getPokemonsData = async (name) => {
 
 export const getPokedex = (url='https://pokeapi.co/api/v2/pokemon?limit=10') => {
   return (dispatch) => {
+    dispatch(activeLoading());
     fetch(url)
       .then((response) => {
         return response.json();
@@ -48,8 +59,10 @@ export const getPokedex = (url='https://pokeapi.co/api/v2/pokemon?limit=10') => 
             return newData;
           }),
         );
+        dispatch(deactiveLoading());
         dispatch(setPagination(next));
         dispatch(getPokemons(PokemonList));
-      });
+      })
+      .catch(() => dispatch(deactiveLoading()));
   };
 };

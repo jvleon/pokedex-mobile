@@ -7,7 +7,7 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 import {Button, ThemeProvider} from 'react-native-elements';
 import {Provider} from 'react-redux';
 import store from './store';
@@ -18,17 +18,25 @@ import Detail from './containers/Detail';
 
 const Stack = createStackNavigator();
 
-const App = () => (
-  <Provider store={store}>
-    <NavigationContainer>
-      <ThemeProvider>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen title="Pokedex" name="Home" component={Home} />
-          <Stack.Screen name="Detail" component={Detail} />
-        </Stack.Navigator>
-      </ThemeProvider>
-    </NavigationContainer>
-  </Provider>
-);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <ThemeProvider>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              options={{
+                headerTitle: 'Pokedex',
+              }}
+              name="Home"
+              component={Home}
+            />
+            <Stack.Screen name="Detail" component={Detail} />
+          </Stack.Navigator>
+        </ThemeProvider>
+      </NavigationContainer>
+    </Provider>
+  );
+};
 
 export default App;

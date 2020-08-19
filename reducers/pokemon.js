@@ -1,7 +1,9 @@
-import {GET_ALL_POKEMONS, SET_PAGINATION} from '../actionTypes';
+import {GET_ALL_POKEMONS, SET_PAGINATION, SET_LOADING} from '../actionTypes';
 const initialValue = {
   pokemons: [],
   next: null,
+  loading: false,
+  currentPokemon: null,
 };
 
 export const pokemons = (state = initialValue, {type, payload}) => {
@@ -15,6 +17,11 @@ export const pokemons = (state = initialValue, {type, payload}) => {
       return {
         ...state,
         next: payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: payload,
       };
     default:
       return state;

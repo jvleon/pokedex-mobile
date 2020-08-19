@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import InfiniteScroll from 'react-native-infinite-scrolling';
 import {getPokedex} from '../actions/';
 import Card from '../components/Card';
+import Modal from '../components/Modal';
 
 const Home = ({pokemons, navigation, next, ...props}) => {
   useEffect(() => {
@@ -14,7 +15,10 @@ const Home = ({pokemons, navigation, next, ...props}) => {
   };
 
   return (
-    <InfiniteScroll renderData={Card} data={pokemons} loadMore={onLoadMore} />
+    <>
+      <InfiniteScroll renderData={Card} data={pokemons} loadMore={onLoadMore} />
+      <Modal />
+    </>
   );
 };
 
