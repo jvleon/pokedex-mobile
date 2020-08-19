@@ -11,10 +11,7 @@ export const MainContainer = styled.View`
 export const Content = styled.View`
   width: 50%;
   background-color: white;
-  border-radius: 5;
+  border-radius: 5px;
   text-align: center;
-  shadowOffset:{  width: 10,  height: 10,  };
-  shadowColor: black;
-  shadowOpacity: 1.0;
   padding: 10px;
 `;
