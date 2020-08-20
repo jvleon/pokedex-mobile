@@ -1,4 +1,8 @@
-import {GET_BERRIES, SET_PAGINATION_BERRIES, SET_LOADING_BERRIES} from '../actionTypes';
+import {
+  GET_BERRIES,
+  SET_PAGINATION_BERRIES,
+  SET_LOADING_BERRIES,
+} from '../actionTypes';
 const initialValue = {
   berries: [],
   next: null,
