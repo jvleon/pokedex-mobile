@@ -3,7 +3,7 @@ import {Icon} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native';
 import {Container, ButtonContainer, TitleContainer, Title} from './styled';
 
-const HeaderNavigation = ({navigation}) => (
+const HeaderNavigation = ({navigation, title}) => (
   <Container>
     <ButtonContainer>
       <TouchableOpacity onPress={() => console.log(navigation.toggleDrawer())}>
@@ -11,7 +11,7 @@ const HeaderNavigation = ({navigation}) => (
       </TouchableOpacity>
     </ButtonContainer>
     <TitleContainer>
-      <Title>Pokedex</Title>
+      <Title>{title}</Title>
     </TitleContainer>
   </Container>
 );

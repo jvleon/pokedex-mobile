@@ -5,7 +5,7 @@ import {getPokedex} from '../../actions/';
 import Card from '../../components/Card';
 import Modal from '../../components/Modal';
 
-const Home = ({pokemons, navigation, next, ...props}) => {
+const Home = ({pokemons, navigation, next, loading, ...props}) => {
   useEffect(() => {
     props.getPokedex();
   }, []);
@@ -13,18 +13,18 @@ const Home = ({pokemons, navigation, next, ...props}) => {
   const onLoadMore = () => {
     props.getPokedex(next);
   };
-
   return (
     <>
       <InfiniteScroll renderData={Card} data={pokemons} loadMore={onLoadMore} />
-      <Modal />
+      <Modal loading={loading} />
     </>
   );
 };
 
-const mapStateToProps = ({pokemons, next}) => ({
-  pokemons,
-  next,
+const mapStateToProps = ({pokemons}) => ({
+  pokemons: pokemons.pokemons,
+  next: pokemons.next,
+  loading: pokemons.loading,
 });
 
 const mapDispatchToProps = {

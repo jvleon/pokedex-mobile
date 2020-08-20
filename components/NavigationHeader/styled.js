@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.View`
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
+  padding: 10px 0;
 `;
 
 export const ButtonContainer = styled.View`

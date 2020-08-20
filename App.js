@@ -15,6 +15,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Home from './containers/Home';
 import Detail from './containers/Detail';
 import Header from './components/NavigationHeader';
+import Berries from './containers/Berries';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -23,12 +24,28 @@ const MainRoutes = () => (
   <Stack.Navigator>
     <Stack.Screen
       options={{
-        header: ({navigation}) => <Header navigation={navigation} />,
+        header: ({navigation}) => (
+          <Header navigation={navigation} title="Pokedex" />
+        ),
       }}
       name="Home"
       component={Home}
     />
     <Stack.Screen name="Detail" component={Detail} />
+  </Stack.Navigator>
+);
+
+const BerriesRoutes = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      options={{
+        header: ({navigation}) => (
+          <Header navigation={navigation} title="Berries" />
+        ),
+      }}
+      name="Berries-flux"
+      component={Berries}
+    />
   </Stack.Navigator>
 );
 
@@ -38,10 +55,11 @@ const App = () => {
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen
-            name="main"
+            name="Main"
             options={{title: 'Pokemons'}}
             component={MainRoutes}
           />
+          <Drawer.Screen name="Berries" component={BerriesRoutes} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Modal, Text} from 'react-native';
-import {connect} from 'react-redux';
 import {MainContainer, Content} from './styled';
 
 const CustomModal = ({loading}) => {
@@ -19,8 +18,4 @@ const CustomModal = ({loading}) => {
   );
 };
 
-const mapStateToProps = ({loading}) => ({
-  loading,
-});
-
-export default connect(mapStateToProps, null)(CustomModal);
+export default CustomModal;
